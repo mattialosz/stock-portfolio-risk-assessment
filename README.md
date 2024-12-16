@@ -136,3 +136,15 @@ By combining graphical analysis and key metrics, Monte Carlo simulations allow i
 ![screenshot](img/img7.png)
 
 ![screenshot](img/img6.png)
+
+
+---
+
+© 2024 by Mattia Loszach
+
+**Sources and References**
+- [Monte Carlo Simulation on Investopedia](https://www.investopedia.com/terms/m/montecarlosimulation.asp)
+- [Wikipedia Geometric Brownian motion](https://en.wikipedia.org/wiki/Geometric_Brownian_motion)
+- [yfinance Python Library on GitHub](https://github.com/ranaroussi/yfinance)
+- [Value at Risk (VaR) Explained](https://www.investopedia.com/terms/v/var.asp)  
+- [Conditional Value at Risk (CVaR)](https://www.investopedia.com/terms/c/conditional_value_at_risk.asp)

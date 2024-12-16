@@ -6,8 +6,16 @@ Notebook created by [Mattia Loszach](https://mattia-loszach.com)
 
 ---
 
+![screenshot](img/img9.png)
+
 ## Choose your assets
 This code allows selecting assets and specifying their quantities using ticker symbols from the Yahoo Finance API. For missing or unknown tickers, check the [Yahoo Finance Website](https://finance.yahoo.com). Start by running the following code cell and you will be able to input the assets.
+
+- Example using the Magnificent Seven (Stocks):
+
+![screenshot](img/671178ec-0024-470a-861e-c8dc7cba20d0.jpg)
+
+![screenshot](img/img1.png)
 
 ## Choose Parameters for Simulation
 By default, periods is set to 252 days, representing a typical trading year in the stock market, and simulations is set to 1000 runs. Users can customize these parameters to suit their preferences.
@@ -40,6 +48,8 @@ To model dependencies between assets, the correlation matrix $\mathbf{C}$ is cal
 $$
 \mathbf{L} \text{ such that } \mathbf{C} = \mathbf{L} \mathbf{L}^\top
 $$
+
+![screenshot](img/img8.png)
 
 ---
 
@@ -111,3 +121,18 @@ Monte Carlo simulations provide a powerful framework for analyzing the potential
 
 By combining graphical analysis and key metrics, Monte Carlo simulations allow investors to evaluate the uncertainty in portfolio performance and make more informed decisions.
 
+---
+
+## Some examples of visualizations/graphs in the Notebook
+
+![screenshot](img/img2.png)
+
+![screenshot](img/img4.png)
+
+![screenshot](img/img5.png)
+
+![screenshot](img/img9.png)
+
+![screenshot](img/img7.png)
+
+![screenshot](img/img6.png)

@@ -9,56 +9,76 @@ Notebook created by [Mattia Loszach](https://mattia-loszach.com)
 ## Choose your assets
 This code allows selecting assets and specifying their quantities using ticker symbols from the Yahoo Finance API. For missing or unknown tickers, check the [Yahoo Finance Website](https://finance.yahoo.com). Start by running the following code cell and you will be able to input the assets.
 
-
 ## Choose Parameters for Simulation
 By default, periods is set to 252 days, representing a typical trading year in the stock market, and simulations is set to 1000 runs. Users can customize these parameters to suit their preferences.
 
 ## Context & Run simulation
 
+This simulation models the price evolution of multiple assets using the [Geometric Brownian Motion (GBM)](https://en.wikipedia.org/wiki/Geometric_Brownian_motion) in a multivariate context, which accounts for asset correlations.
 
-This simulation models the price evolution of multiple assets using the [Geometric Brownian Motion (GBM)](https://en.wikipedia.org/wiki/Geometric_Brownian_motion)  in a multivariate context, which accounts for asset correlations. 
+---
+
 ### 1. **Drift and Volatility**
 The drift term $\mu$ and volatility term $\sigma$ for each asset are calculated from historical daily returns:
 
-- $\mu_i$ = mean of daily returns for asset i
-- $\sigma_i$ = standard deviation of daily returns for asset i
+- $\mu_i = \text{mean of daily returns for asset } i$
+- $\sigma_i = \text{standard deviation of daily returns for asset } i$
 
 The drift for the simulation is adjusted using:
+
 $$
 \text{Drift} = \mu - \frac{1}{2} \sigma^2
 $$
+
 This adjustment ensures consistency with the GBM model.
+
+---
 
 ### 2. **Correlation Matrix and Cholesky Decomposition**
 To model dependencies between assets, the correlation matrix $\mathbf{C}$ is calculated from the historical daily returns. The **Cholesky decomposition** is used to transform independent standard normal random variables into correlated random variables:
+
 $$
 \mathbf{L} \text{ such that } \mathbf{C} = \mathbf{L} \mathbf{L}^\top
 $$
 
+---
+
 ### 3. **Random Sampling**
 For $n_{\text{simulations}}$ Monte Carlo simulations over $T$ periods, random standard normal variables are generated:
+
 $$
 Z_{i,t} \sim \mathcal{N}(0, 1)
 $$
+
 These are transformed into correlated random values using:
+
 $$
 \text{Correlated Random Values} = \mathbf{L} \cdot \mathbf{Z}
 $$
 
+---
+
 ### 4. **Asset Price Evolution**
 Using the GBM formula, the simulated prices are calculated iteratively:
+
 $$
 S_{i, t+1} = S_{i, t} \cdot \exp\left( \text{Drift}_i \cdot \Delta t + \sigma_i \cdot \sqrt{\Delta t} \cdot \text{Correlated Random Values}\right)
 $$
+
 Where:
+
 - $S_{i, t}$ is the price of asset $i$ at time $t$,
 - $\Delta t = 1$ represents daily time steps.
 
+---
+
 ### 5. **Portfolio Value**
+
 The simulated portfolio value is computed as the weighted sum of asset prices, based on the number of shares held:
-$$
-V_{\text{portfolio}, t} = \sum_{i=1}^{N} \text{Shares}_i \cdot S_{i, t}
-$$
+
+V<sub>portfolio, t</sub> = &sum;<sub>i=1</sub><sup>N</sup> Shares<sub>i</sub> &middot; S<sub>i, t</sub>
+
+
 
 ---
 
@@ -68,10 +88,9 @@ $$
 3. **Simulated Prices**: Use the GBM formula iteratively for price evolution.
 4. **Portfolio Value**: Aggregate asset values to get the portfolio value at each step.
 
+---
 
 ## Results
-
----
 
 ### Interpreting Monte Carlo Simulation Results
 
@@ -91,3 +110,4 @@ Monte Carlo simulations provide a powerful framework for analyzing the potential
    - Simulations should be used as a tool for scenario analysis and risk assessment, not as a standalone forecast.
 
 By combining graphical analysis and key metrics, Monte Carlo simulations allow investors to evaluate the uncertainty in portfolio performance and make more informed decisions.
+
